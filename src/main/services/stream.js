@@ -1,4 +1,4 @@
-import { createDefensivePromise } from './../utils'
+import { createDefensivePromise } from 'js-utils'
 
 // TODO: this is not going to work because
 //    1. the sleep is synchronous (verify though..)

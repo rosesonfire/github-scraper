@@ -1,4 +1,4 @@
-import { createDefensivePromise } from '../../utils'
+import { createDefensivePromise } from 'js-utils'
 
 export default ({ xml2js }) => ({
   convert: xml => createDefensivePromise((resolve, reject) => {
