@@ -36,7 +36,7 @@ exports.default = function (_ref) {
             locked: false,
             completed: false,
             succeeded: false,
-            error: null
+            error: new Error('Exhausted all (' + maxPollTries + ') poll tries')
           };
 
           Rx.Observable.interval(pollingInterval).take(maxPollTries).map(function (_) {

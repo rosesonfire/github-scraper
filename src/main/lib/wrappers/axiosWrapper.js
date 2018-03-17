@@ -24,7 +24,7 @@ export default ({ axios, Rx, maxPollTries, pollingInterval }) => ({
           locked: false,
           completed: false,
           succeeded: false,
-          error: null
+          error: new Error(`Exhausted all (${maxPollTries}) poll tries`)
         }
 
         Rx.Observable
