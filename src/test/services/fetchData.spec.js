@@ -2,7 +2,7 @@ import { describe, before, beforeEach, afterEach, it } from './../setup'
 // unit
 import fetchData from './../../main/services/fetchData'
 // mocks
-import axiosWrapperMock from './../mocks/lib/wrappers/axiosWrapper'
+import { wrappersMock } from './../mocks/others/jsUtils'
 
 describe('FetchData', () => {
   let
@@ -20,7 +20,7 @@ describe('FetchData', () => {
 
   describe('When fetching data', () => {
     beforeEach(() => {
-      axios = axiosWrapperMock()
+      axios = wrappersMock().axiosWrapper
       mocks = [ axios.get ]
       axios.get.once().withExactArgs(url).returns(Promise.resolve(data))
     })

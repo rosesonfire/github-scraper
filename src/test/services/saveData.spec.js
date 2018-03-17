@@ -2,7 +2,7 @@ import { describe, before, beforeEach, afterEach, it } from './../setup'
 // unit
 import saveData from './../../main/services/saveData'
 // mocks
-import axiosWrapperMock from './../mocks/lib/wrappers/axiosWrapper'
+import { wrappersMock } from './../mocks/others/jsUtils'
 
 describe('SaveData', () => {
   let
@@ -24,7 +24,7 @@ describe('SaveData', () => {
 
   describe('When saving data', () => {
     beforeEach(() => {
-      axios = axiosWrapperMock()
+      axios = wrappersMock().axiosWrapper
       mocks = [ axios.postWithPolling ]
       axios.postWithPolling.once().withExactArgs(url, data)
         .returns(Promise.resolve(reply))

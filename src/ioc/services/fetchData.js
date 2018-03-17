@@ -4,6 +4,6 @@ import fetchData from './../../main/services/fetchData'
 exports = module.exports = createNewInstance({
   instanceConstructor: fetchData,
   dependencyConfig: {
-    http: 'lib/wrappers/axiosWrapper'
+    http: 'others/axiosWrapper'
   }
 })

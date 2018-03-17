@@ -9,6 +9,6 @@ exports = module.exports = createNewInstance({
          `${config.dataAPI.path}`
   },
   dependencyConfig: {
-    http: 'lib/wrappers/axiosWrapper'
+    http: 'others/axiosWrapper'
   }
 })
