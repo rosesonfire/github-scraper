@@ -1,13 +1,11 @@
-import { createDefensivePromise } from 'js-utils'
-
 // TODO: this is not going to work because
 //    1. the sleep is synchronous (verify though..)
 //    2. the internal promises don't get resolved before going to
 //       next sleep cycle... :( (verify though..)
 
 // Start scrapping
-export default ({ Rx, scrape, fetchInterval }) => () =>
-  createDefensivePromise((resolve, reject) =>
+export default ({ Rx, scrape, fetchInterval, utils }) => () =>
+  utils.createDefensivePromise((resolve, reject) =>
     Rx.Observable
       .interval(fetchInterval)
       // .take(10) // used while testing

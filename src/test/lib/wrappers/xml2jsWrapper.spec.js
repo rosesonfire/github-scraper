@@ -3,17 +3,24 @@ import { describe, before, beforeEach, afterEach, it } from './../../setup'
 import xml2jsWrapper from './../../../main/lib/wrappers/xml2jsWrapper'
 // mocks
 import { xml2jsMock, xml2jsStub } from './../../mocks/others/xml2js'
+import { utilsStub } from './../../mocks/others/jsUtils'
 
 describe('XML2JSWrapper', () => {
   let
     mocks,
     xml2js,
     xml,
-    jsonData
+    jsonData,
+    utils
 
   before(() => {
     xml = '<xml>Some xml data</xml>'
-    jsonData = {a: 1, b: 2}
+    jsonData = { a: 1, b: 2 }
+  })
+
+  beforeEach(() => {
+    utils = utilsStub()
+    utils.createDefensivePromise.callsFake(f => new Promise(f))
   })
 
   afterEach(() => mocks.forEach(mock => mock.verify()))
@@ -30,10 +37,10 @@ describe('XML2JSWrapper', () => {
       })
 
       it('should return a promise', () =>
-        xml2jsWrapper({ xml2js }).convert(xml).should.be.a('promise'))
+        xml2jsWrapper({ xml2js, utils }).convert(xml).should.be.a('promise'))
 
       it('should return correct json', () =>
-        xml2jsWrapper({ xml2js }).convert(xml).should.eventually
+        xml2jsWrapper({ xml2js, utils }).convert(xml).should.eventually
           .equal(jsonData))
     })
 
@@ -44,7 +51,8 @@ describe('XML2JSWrapper', () => {
       })
 
       it('should fail', () =>
-        xml2jsWrapper({ xml2js }).convert(xml).should.eventually.be.rejected)
+        xml2jsWrapper({ xml2js, utils }).convert(xml).should.eventually.be
+          .rejected)
     })
 
     describe('When core xml2js fails', () => {
@@ -54,7 +62,8 @@ describe('XML2JSWrapper', () => {
       })
 
       it('should fail', () =>
-        xml2jsWrapper({ xml2js }).convert(xml).should.eventually.be.rejected)
+        xml2jsWrapper({ xml2js, utils }).convert(xml).should.eventually.be
+          .rejected)
     })
   })
 
@@ -66,7 +75,7 @@ describe('XML2JSWrapper', () => {
     })
 
     it('should be called with proper arguments', () => {
-      xml2jsWrapper({ xml2js }).convert(xml)
+      xml2jsWrapper({ xml2js, utils }).convert(xml)
       '1'.should.equal('1')
     })
   })
