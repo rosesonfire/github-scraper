@@ -40,10 +40,10 @@ export default ({ axios, Rx, maxPollTries, pollingInterval }) => ({
                     // successfully posted data
                     pollResult.completed = true
                     pollResult.succeeded = true
+                    pollResult.error = null
                   } else if (pollResponse.status === 202) {
                     // still processing
-                    pollResult.completed = false
-                    pollResult.locked = true
+                    pollResult.locked = false
                   } else if (pollResponse.status === 500) {
                     // failed to post data
                     pollResult.completed = true
