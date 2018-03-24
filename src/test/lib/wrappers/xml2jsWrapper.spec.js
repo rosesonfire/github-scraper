@@ -1,26 +1,21 @@
+import { utils } from 'js-utils'
+
 import { describe, before, beforeEach, afterEach, it } from './../../setup'
 // unit
 import xml2jsWrapper from './../../../main/lib/wrappers/xml2jsWrapper'
 // mocks
 import { xml2jsMock, xml2jsStub } from './../../mocks/others/xml2js'
-import { utilsStub } from './../../mocks/others/jsUtils'
 
 describe('XML2JSWrapper', () => {
   let
     mocks,
     xml2js,
     xml,
-    jsonData,
-    utils
+    jsonData
 
   before(() => {
     xml = '<xml>Some xml data</xml>'
     jsonData = { a: 1, b: 2 }
-  })
-
-  beforeEach(() => {
-    utils = utilsStub()
-    utils.createDefensivePromise.callsFake(f => new Promise(f))
   })
 
   afterEach(() => mocks.forEach(mock => mock.verify()))
