@@ -1,8 +1,9 @@
-import { createNewInstance } from './../iocHelper'
+import { utils } from 'js-utils'
+
 import scrape from './../../main/services/scrape'
 import config from './../../config'
 
-exports = module.exports = createNewInstance({
+exports = module.exports = utils.iocHelper.createNewInstance({
   instanceConstructor: scrape,
   configuration: {
     url: config.scraper.endpoint

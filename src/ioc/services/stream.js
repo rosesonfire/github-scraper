@@ -1,11 +1,10 @@
 import Rx from 'rxjs'
 import { utils } from 'js-utils'
 
-import { createNewInstance } from './../iocHelper'
 import stream from './../../main/services/stream'
 import config from './../../config'
 
-exports = module.exports = createNewInstance({
+exports = module.exports = utils.iocHelper.createNewInstance({
   instanceConstructor: stream,
   configuration: {
     fetchInterval: config.scraper.fetchInterval

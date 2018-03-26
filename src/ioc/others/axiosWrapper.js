@@ -1,11 +1,10 @@
 import axios from 'axios'
 import Rx from 'rxjs'
-import { wrappers } from 'js-utils'
+import { utils, wrappers } from 'js-utils'
 
-import { createNewInstance } from './../iocHelper'
 import config from './../../config'
 
-exports = module.exports = createNewInstance({
+exports = module.exports = utils.iocHelper.createNewInstance({
   instanceConstructor: wrappers.axiosWrapper,
   configuration: {
     maxPollTries: config.scraper.maxPollTries,
