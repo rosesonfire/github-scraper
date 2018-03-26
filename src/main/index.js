@@ -1,6 +1,6 @@
-import { dependencies } from './../ioc'
+import { createInstance } from './../ioc'
 
-dependencies.stream
+createInstance('stream')
   .then(stream => stream())
   // eslint-disable-next-line no-console
   .catch(e => console.error(e))

@@ -2,6 +2,8 @@ import IoC from 'electrolyte'
 
 IoC.use(IoC.dir('dist/ioc'))
 
-export const dependencies = {
-  stream: IoC.create('services/stream')
+const dependencies = {
+  stream: 'services/stream'
 }
+
+export const createInstance = name => IoC.create(dependencies[name])
